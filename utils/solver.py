@@ -73,7 +73,7 @@ def splitBoxes(img):
             cols= np.hsplit(r,9)
             for box in cols:
                 boxes.append(box)
-        logging.info("splitboxes() is completed fro warp perspective")
+        logging.info("splitboxes() is completed for warp perspective")
         return boxes
     except Exception as e:
         raise CustomException(e,sys)

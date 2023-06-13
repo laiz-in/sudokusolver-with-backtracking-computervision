@@ -5,7 +5,7 @@ import os
 
 
 """
-THIA MODULE TAKES DIGIT ARRAY AS INPUT [0][0] to [8][8] , that is 81 digits
+THIs MODULE TAKES DIGIT ARRAY AS INPUT [0][0] to [8][8] , that is 81 digits
 """
 
 def solve(bo):

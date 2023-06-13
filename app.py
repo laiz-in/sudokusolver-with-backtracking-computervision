@@ -11,7 +11,7 @@ UPLOAD_FOLDER = os.path.join('static', 'uploads')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 
-app.secret_key = 'passwordariyilla'
+app.secret_key = '***'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
@@ -28,8 +28,9 @@ def uploadFile():
         # Extracting uploaded image data file name
         img_filename = secure_filename(uploaded_img.filename)
         
-        # Upload file to database (defined uploaded folder in static folder)
+        # Upload file (defined uploaded folder in static folder)
         uploaded_img.save(os.path.join(app.config['UPLOAD_FOLDER'], img_filename))
+
         # Storing uploaded file path in flask session
         session['uploaded_img_file_path'] = os.path.join(app.config['UPLOAD_FOLDER'], img_filename)
         img_file_path = session.get('uploaded_img_file_path', None)
@@ -43,7 +44,6 @@ def uploadFile():
                 
         #FIND CONTOURS
         imgContours = img.copy() # COPY IMAGE FOR DISPLAY PURPOSES
-        imgBigContour = img.copy() # COPY IMAGE FOR DISPLAY PURPOSES
         contours, hierarchy = cv2.findContours(imgThreshold, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) # FIND ALL CONTOURS
         cv2.drawContours(imgContours, contours, -1, (0, 255, 0), 3) # DRAW ALL DETECTED CONTOURS
         
